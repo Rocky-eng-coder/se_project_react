@@ -15,6 +15,8 @@ function App() {
     type: "",
   temp: { F: 999, C: 999 },
     city: "",
+    conition: "",
+    isDay: true
   });
 
   useEffect(() => {
@@ -41,7 +43,9 @@ useEffect(() => {
 getWeather(coordinates, APIkey)
 .then((data) => {
  const filteredData = filterWeatherData(data);
+ console.log('filtered weather data:', filteredData);
  setWeatherData(filteredData)
+ 
 })
 .catch(console.error);
 }, []);
