@@ -7,7 +7,7 @@ return (<div className={`modal ${activeModal === "add-garment" && "modal_opened"
     <button 
     onClick={onClose}
     type="button" 
-    className="modal__close">CLOSE</button>
+    className="modal__close"></button>
     <form className="Modal__form">
         { children }
             <button type="submit" 

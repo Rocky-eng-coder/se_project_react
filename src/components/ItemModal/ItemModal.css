@@ -1,0 +1,60 @@
+.modal {
+  background: #0000004d;
+}
+
+.modal__content_type_image {
+  width: 498px;
+  height: 610px;
+  border-radius: 16px;
+  padding: 0;
+}
+
+.modal__image {
+  width: 100%;
+}
+
+.modal__caption {
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #000000;
+  width: 36;
+  height: 24;
+  top: 624px;
+  left: 503px;
+  margin: 20px 32px 0;
+}
+
+.modal__weather {
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: #000000;
+  width: 115;
+  height: 24;
+  top: 660px;
+  left: 503px;
+  margin: 12px 32px 0;
+}
+
+.modal__close {
+  background-image: url("../../assets/grayclose.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+}

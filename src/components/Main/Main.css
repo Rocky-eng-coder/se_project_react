@@ -6,3 +6,15 @@
   list-style-type: none;
   gap: 21px;
 }
+
+.cards__text {
+  width: 330;
+  height: 25;
+  top: 220px;
+  left: 40px;
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+}
