@@ -33,6 +33,7 @@
   position: absolute;
   top: 20px;
   right: 28px;
+  background: none;
 }
 
 .modal__content {
