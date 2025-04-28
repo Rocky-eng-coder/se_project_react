@@ -13,7 +13,7 @@ const currentDate = new Date().toLocaleString("default", {
     return (
     <header className="header">
         
-      <img className="header__logo" src={logo} />
+      <img className="header__logo" alt="What to Wear Logo" src={logo} />
       <p className="header__date-and-location">{currentDate}, {weatherData.city}</p> 
       <button
       onClick={handleAddClick} 
