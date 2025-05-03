@@ -5,6 +5,11 @@
   justify-content: center;
 }
 
+.card__text {
+  margin-top: 34px;
+  margin-bottom: 34px;
+}
+
 .card:hover {
   cursor: pointer;
 }

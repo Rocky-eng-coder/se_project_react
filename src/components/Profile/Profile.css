@@ -2,3 +2,12 @@
   display: flex;
   gap: 100px;
 }
+
+.clothes-section__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  padding: 0;
+}

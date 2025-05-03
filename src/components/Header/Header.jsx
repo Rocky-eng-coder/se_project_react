@@ -15,7 +15,6 @@ function Header({ handleAddClick, weatherData }) {
       <Link to="/">
         <img className="header__logo" alt="What to Wear Logo" src={logo} />
       </Link>
-
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}
       </p>

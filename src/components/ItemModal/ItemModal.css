@@ -1,10 +1,23 @@
 .modal {
   background: #0000004d;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
 }
 
 .modal__content_type_image {
   width: 498px;
-  height: 610px;
+  height: 1px;
   border-radius: 16px;
   padding: 0;
 }
@@ -20,8 +33,8 @@
   line-height: 24px;
   letter-spacing: 0%;
   color: #000000;
-  width: 36;
-  height: 24;
+  width: 36px;
+  height: 24px;
   top: 624px;
   left: 503px;
   margin: 20px 32px 0;
@@ -34,8 +47,8 @@
   line-height: 24px;
   letter-spacing: 0%;
   color: #000000;
-  width: 115;
-  height: 24;
+  width: 115px;
+  height: 24px;
   top: 660px;
   left: 503px;
   margin: 12px 32px 0;
