@@ -11,8 +11,8 @@ import Footer from "../Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { defaultClothingItems } from "../../utils/constants";
 import { getItems } from "../../utils/api";
+import { addItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -46,7 +46,7 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    const newId = Math.max(...clothingItems.map((item) => item._id)) + 1;
+    addItem({ name, link: imageUrl, weather }).then((newItem) => {});
     // update clothingItems array
     setClothingItems((prevItems) => [
       { name, link: imageUrl, weather },
@@ -91,7 +91,8 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  clothingItems={defaultClothingItems}
+                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -101,6 +102,8 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   weatherData={weatherData}
+                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
