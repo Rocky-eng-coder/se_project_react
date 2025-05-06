@@ -32,20 +32,25 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           <p className="modal__weather">Weather: {card.weather}</p>
 
           <button className="delete-btn__modal" onClick={handleDeleteClick}>
-            Delete
+            Delete item
           </button>
         </div>
       </div>
 
       {showConfirm && (
         <div className="modal modal_type_confirm modal_opened">
-          <div className="modal__content">
-            <p>
+          <div className="modal__content modal__content-delete">
+            <button
+              onClick={handleCancelDelete}
+              type="button"
+              className="modal__close"
+            ></button>
+            <p className="delete-item-modal">
               Are you sure you want to delete this item? This action is
               irreversible.
             </p>
             <button
-              className="modal__cancel-button"
+              className="modal__cancel-button modal__cancel-button-delete"
               onClick={handleConfirmDelete}
             >
               Yes, delete item
