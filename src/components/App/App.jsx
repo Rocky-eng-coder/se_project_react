@@ -46,14 +46,12 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, link: imageUrl, weather }).then((newItem) => {});
-    // update clothingItems array
-    setClothingItems((prevItems) => [
-      { name, link: imageUrl, weather },
-      ...prevItems,
-    ]);
-    // close the modal
-    closeActiveModal();
+    addItem({ name, link: imageUrl, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -75,6 +73,18 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  const handleDeleteItem = (itemToDelete) => {
+    if (!itemToDelete || !itemToDelete._id) {
+      console.warn("Invalid itemToDelete:", itemToDelete);
+      return;
+    }
+
+    setClothingItems((prevItems = []) =>
+      prevItems.filter((item) => item._id !== itemToDelete._id)
+    );
+    closeActiveModal();
+  };
 
   return (
     <CurrentTemperatureUnitContext.Provider
@@ -104,6 +114,7 @@ function App() {
                   weatherData={weatherData}
                   clothingItems={clothingItems}
                   handleAddClick={handleAddClick}
+                  onDelete={handleDeleteItem}
                 />
               }
             />
@@ -120,6 +131,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          onDelete={handleDeleteItem}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

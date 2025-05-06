@@ -11,6 +11,13 @@
   visibility: hidden;
 }
 
+.modal__content.modal__content_type_image {
+  width: 498px;
+  height: auto;
+  border-radius: 16px;
+  padding: 0;
+}
+
 .modal_opened {
   visibility: visible;
 }
@@ -24,6 +31,8 @@
 
 .modal__image {
   width: 100%;
+  height: auto;
+  border-radius: 16px;
 }
 
 .modal__caption {
@@ -66,6 +75,11 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+}
+
+.delete-btn__modal {
+  display: flex;
+  margin-left: 365px;
 }
 
 .modal__close:hover {

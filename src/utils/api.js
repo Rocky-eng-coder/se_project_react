@@ -1,21 +1,22 @@
-const baseUrl = "http://localhost:3001";
+import { defaultClothingItems } from "../utils/constants";
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  // This simulates an API call by returning a Promise
+  return Promise.resolve(defaultClothingItems);
 }
 
 function addItem({ name, link, weather }) {
-  return fetch(`${baseUrl}/items`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ name, link, weather }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  const timestamp = Date.now();
+  // Create a new item
+  const newItem = {
+    _id: timestamp,
+    name,
+    weather,
+    link,
+  };
+
+  // Return a Promise that resolves with the new item
+  return Promise.resolve(newItem);
 }
 
 export { getItems, addItem };
