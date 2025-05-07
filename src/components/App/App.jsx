@@ -46,9 +46,21 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    addItem({ name, link: imageUrl, weather })
+    // Create a new item with the correct property name
+    const newItemData = {
+      name,
+      link: imageUrl, // we send it as imageUrl
+      weather,
+    };
+
+    addItem(newItemData)
       .then((newItem) => {
-        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        // If the server returns 'link', convert it to 'imageUrl'
+        const standardizedItem = {
+          ...newItem,
+          imageUrl: newItem.link || newItem.imageUrl,
+        };
+        setClothingItems((prevItems) => [standardizedItem, ...prevItems]);
         closeActiveModal();
       })
       .catch(console.error);
@@ -67,8 +79,12 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log(data);
-        setClothingItems(data);
+        const normalizedData = data.map((item) => ({
+          ...item,
+          imageUrl: item.link || item.imageUrl,
+        }));
+
+        setClothingItems(normalizedData);
         // set the clothing items
       })
       .catch(console.error);

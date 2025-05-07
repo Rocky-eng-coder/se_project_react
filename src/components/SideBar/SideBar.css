@@ -15,4 +15,5 @@
   font-size: 20px;
   line-height: 100%;
   letter-spacing: 0%;
+  white-space: nowrap;
 }

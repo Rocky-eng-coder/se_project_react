@@ -59,7 +59,7 @@ export default function AddItemModal({
         Image{" "}
         <input
           type="url"
-          name="link"
+          name="imageUrl"
           className="modal__input"
           required
           id="imageUrl"
