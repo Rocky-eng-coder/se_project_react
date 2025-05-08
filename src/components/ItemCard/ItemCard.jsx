@@ -1,4 +1,4 @@
-import "../ItemCard.ItemCard";
+import "./ItemCard.css";
 
 function ItemCard({ item, onCardClick, onDelete }) {
   const handleCardClick = () => {
@@ -19,9 +19,6 @@ function ItemCard({ item, onCardClick, onDelete }) {
         src={item.imageUrl}
         alt={item.name}
       />
-      <button onClick={handleDeleteClick} className="card__delete-button">
-        Delete
-      </button>
     </li>
   );
 }
