@@ -1,4 +1,4 @@
-import ItemCard from "../ItemCard/ItemCard";
+import ItemCard from "./ItemCard";
 import "./ClothesSection.css";
 
 function ClothesSection({ clothingItems = [], onCardClick, onAddClick }) {
