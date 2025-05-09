@@ -24,7 +24,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
         <button
           onClick={onClose}
           type="button"
-          className="modal__close"
+          className="modal__close modal__close_item"
         ></button>
         <img
           src={card.imageUrl}
@@ -35,7 +35,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
 
-          <button className="delete-btn__modal" onClick={handleDeleteClick}>
+          <button className="modal__delete-button" onClick={handleDeleteClick}>
             Delete item
           </button>
         </div>
@@ -43,11 +43,11 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
 
       {showConfirm && (
         <div className="modal modal_type_confirm modal_opened">
-          <div className="modal__content modal__content-delete">
+          <div className="modal__content modal__content_type_delete">
             <button
               onClick={handleCancelDelete}
               type="button"
-              className="modal__close"
+              className="modal__close modal__close_item"
             ></button>
             <p className="delete-item-modal">
               Are you sure you want to delete this item? This action is

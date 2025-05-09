@@ -39,6 +39,7 @@ export default function AddItemModal({
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
+      isSubmitDisabled={!name || !imageUrl || !weather}
     >
       <label htmlFor="name" className="modal__label">
         Name {""}
