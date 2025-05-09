@@ -19,7 +19,7 @@ function App() {
     type: "",
     temp: { F: 999, C: 999 },
     city: "",
-    conition: "",
+    condition: "",
     isDay: true,
   });
 
@@ -70,7 +70,6 @@ function App() {
     getWeather(coordinates, APIkey)
       .then((data) => {
         const filteredData = filterWeatherData(data);
-        console.log("filtered weather data:", filteredData);
         setWeatherData(filteredData);
       })
       .catch(console.error);
@@ -83,6 +82,7 @@ function App() {
           ...item,
           imageUrl: item.link || item.imageUrl,
         }));
+        console.log("Normalized data:", normalizedData);
 
         setClothingItems(normalizedData);
         // set the clothing items

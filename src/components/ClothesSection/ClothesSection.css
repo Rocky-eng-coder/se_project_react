@@ -1,8 +1,8 @@
-.itemsHeader {
+.clothes-section__header {
   display: flex;
 }
 
-.yourItems {
+.clothes-section__title {
   width: 94px;
   height: 25px;
   margin-left: 17px;
