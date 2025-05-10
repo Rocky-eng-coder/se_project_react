@@ -15,7 +15,7 @@
   background-color: transparent;
 }
 
-.modal__close.modal__close_item {
+.modal__close.modal__close--item {
   position: absolute;
   top: 20px;
   right: 28px;
@@ -36,7 +36,7 @@
   padding: 20px 32px;
 }
 
-.modal__content.modal__content_type_image {
+.modal__content.modal__content--image {
   width: 498px;
   height: auto;
   border-radius: 16px;
@@ -45,14 +45,6 @@
 
 .modal_opened {
   visibility: visible;
-}
-
-.modal__content_type_image {
-  width: 498px;
-  height: 1px;
-  border-radius: 16px;
-  padding: 0;
-  background-color: transparent;
 }
 
 .modal__image {
@@ -105,7 +97,7 @@
   white-space: nowrap;
 }
 
-.modal__content.modal__content_type_delete {
+.modal__content.modal__content--delete {
   width: 670px;
   height: 280px;
   display: flex;
@@ -114,7 +106,7 @@
   justify-content: center;
 }
 
-.delete-item-modal {
+.modal__item--close {
   width: 360px;
   margin: 8px 0;
   font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
@@ -136,7 +128,7 @@
   border: none;
 }
 
-.modal__cancel-button.modal__cancel-button-delete {
+.modal__cancel-button.modal__cancel-button--delete {
   color: #ff4d00;
 }
 

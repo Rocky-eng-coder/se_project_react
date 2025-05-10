@@ -82,7 +82,6 @@ function App() {
           ...item,
           imageUrl: item.link || item.imageUrl,
         }));
-        console.log("Normalized data:", normalizedData);
 
         setClothingItems(normalizedData);
         // set the clothing items
