@@ -24,7 +24,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
         <button
           onClick={onClose}
           type="button"
-          className="modal__close modal__close_item"
+          className="modal__close modal__close--item"
         ></button>
         <img
           src={card.imageUrl}
@@ -47,7 +47,7 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
             <button
               onClick={handleCancelDelete}
               type="button"
-              className="modal__close modal__close_item"
+              className="modal__close modal__close--item"
             ></button>
             <p className="modal__item--close">
               Are you sure you want to delete this item? This action is
