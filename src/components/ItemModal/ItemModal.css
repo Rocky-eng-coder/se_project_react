@@ -15,7 +15,7 @@
   background-color: transparent;
 }
 
-.modal__close.modal__close--item {
+.modal__close.modal__close_item {
   position: absolute;
   top: 20px;
   right: 28px;
