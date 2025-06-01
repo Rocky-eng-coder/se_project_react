@@ -13,6 +13,9 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItems } from "../../utils/api";
 import { addItem } from "../../utils/api";
+import { loginUser, checkToken, registerUser } from "../../utils/auth";
+import LoginModal from "../LoginModal/LoginModal";
+import RegisterModal from "../RegisterModal/RegisterModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,6 +30,9 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -46,6 +52,10 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      console.warn("You must be logged in to add items.");
+    }
     // Create a new item with the correct property name
     const newItemData = {
       name,
@@ -53,7 +63,7 @@ function App() {
       weather,
     };
 
-    addItem(newItemData)
+    addItem(newItemData, token)
       .then((newItem) => {
         // If the server returns 'link', convert it to 'imageUrl'
         const standardizedItem = {
@@ -88,6 +98,45 @@ function App() {
       })
       .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+      checkToken(token)
+        .then((userData) => {
+          console.log("Token is valid. User data:", userData);
+        })
+        .catch((err) => {
+          console.error("Invalid token:", err);
+          localStorage.removeItem("jwt");
+        });
+    }
+  }, []);
+
+  const handleRegister = (userData) => {
+    registerUser(userData)
+      .then((res) => {
+        console.log("User registered:", res);
+        setIsRegisterModalOpen(false);
+      })
+      .catch((err) => console.error("Registration error:", err));
+  };
+
+  const handleLogin = ({ email, password }) => {
+    loginUser({ email, password })
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("jwt", res.token);
+          console.log("Login successful");
+        } else {
+          console.warm("No token returned");
+        }
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+      });
+  };
 
   const handleDeleteItem = (itemToDelete) => {
     if (!itemToDelete || !itemToDelete._id) {
@@ -134,8 +183,11 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/signin"
+              element={<LoginModal onLogin={handleLogin} />}
+            />
           </Routes>
-
           <Footer />
         </div>
         <AddItemModal
@@ -148,6 +200,16 @@ function App() {
           card={selectedCard}
           onClose={closeActiveModal}
           onDelete={handleDeleteItem}
+        />
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          onClose={closeActiveModal}
+          onLogin={handleLogin}
+        />
+        <RegisterModal
+          isOpen={isRegisterModalOpen}
+          onClose={closeActiveModal}
+          onRegister={handleRegister}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>

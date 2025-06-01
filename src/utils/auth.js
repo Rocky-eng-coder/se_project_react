@@ -24,4 +24,16 @@ function loginUser({ email, password }) {
   );
 }
 
-export { registerUser, loginUser };
+function checkToken(token) {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Token check failed: ${res.status}`)
+  );
+}
+
+export { registerUser, loginUser, checkToken };

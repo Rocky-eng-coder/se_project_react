@@ -1,11 +1,11 @@
 import "./RegisterModal.css";
-import ModalWithForm from "../ModalWithForm from ../ModalWithForm/ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
 export default function RegisterModal({ onClose, isOpen, onRegister }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, , setName] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,8 +56,8 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           className="modal__input"
           placeholder="Name"
           required
-          minlength="2"
-          max-length="30"
+          minLength="2"
+          maxLength="30"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
