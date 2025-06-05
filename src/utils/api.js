@@ -6,11 +6,12 @@ function getItems() {
   });
 }
 
-function addItem({ name, link, weather }) {
+function addItem({ name, link, weather }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, link, weather }),
   }).then((res) =>
@@ -18,13 +19,12 @@ function addItem({ name, link, weather }) {
   );
 }
 
-function deleteItem({ name, link, weather }) {
-  return fetch(`${baseUrl}/items`, {
+function deleteItem(itemId, token) {
+  return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, link, weather }),
   }).then((res) =>
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );

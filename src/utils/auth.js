@@ -36,4 +36,17 @@ function checkToken(token) {
   );
 }
 
-export { registerUser, loginUser, checkToken };
+function updateUserProfile({ name, avatar }, token) {
+  return fetch("http://localhost:3001/users/me", {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Update failed: ${res.status}`)
+  );
+}
+
+export { registerUser, loginUser, checkToken, updateUserProfile };

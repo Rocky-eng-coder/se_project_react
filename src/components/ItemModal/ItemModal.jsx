@@ -1,8 +1,10 @@
 import "./ItemModal.css";
-import react, { useState } from "react";
+import React, { useState, useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemModal({ activeModal, onClose, card, onDelete }) {
   const [showConfirm, setShowConfirm] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
 
   const handleDeleteClick = () => {
     setShowConfirm(true);
@@ -17,6 +19,8 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
   const handleCancelDelete = () => {
     setShowConfirm(false);
   };
+
+  const isOwn = currentUser && card.owner === currentUser._id;
 
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
@@ -35,9 +39,14 @@ function ItemModal({ activeModal, onClose, card, onDelete }) {
           <h2 className="modal__caption">{card.name}</h2>
           <p className="modal__weather">Weather: {card.weather}</p>
 
-          <button className="modal__delete-button" onClick={handleDeleteClick}>
-            Delete item
-          </button>
+          {isOwn && (
+            <button
+              className="modal__delete-button"
+              onClick={handleDeleteClick}
+            >
+              Delete item
+            </button>
+          )}
         </div>
       </div>
 
