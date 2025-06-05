@@ -30,4 +30,26 @@ function deleteItem(itemId, token) {
   );
 }
 
-export { getItems, addItem, deleteItem };
+function addCardLike(cardId, token) {
+  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+    method: "PUT",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  );
+}
+
+function removeCardLike(cardId, token) {
+  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }).then((res) =>
+    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+  );
+}
+
+export { getItems, addItem, deleteItem, addCardLike, removeCardLike };

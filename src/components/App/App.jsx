@@ -20,6 +20,8 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { updateUserProfile } from "../../utils/auth";
+import { addCardLike, removeCardLike } from "../../utils/api";
+import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -204,6 +206,27 @@ function App() {
       });
   };
 
+  const handleCardLike = ({ _id, likes }) => {
+    const token = localStorage.getItem("jwt");
+    const isLiked = likes.some((user) => user === currentUser._id);
+
+    const likeorDislike = isLiked ? removeCardLike : addCardLike;
+
+    likeorDislike(_id, token)
+      .token((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === _id ? updatedCard : item))
+        );
+      })
+      .catch((err) => console.error("Error updating like:", err));
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser(null);
+  };
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
@@ -223,6 +246,7 @@ function App() {
                     clothingItems={clothingItems}
                     handleAddClick={handleAddClick}
                     onDelete={handleDeleteItem}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -236,6 +260,8 @@ function App() {
                     handleAddClick={handleAddClick}
                     onDelete={handleDeleteItem}
                     onEditProfile={() => setIsEditProfileModalOpen(true)}
+                    onCardLike={handleCardLike}
+                    onSignOut={handleSignOut}
                   />
                 }
               />
