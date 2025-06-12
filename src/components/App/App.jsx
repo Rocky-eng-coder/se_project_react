@@ -59,6 +59,9 @@ function App() {
 
   const closeActiveModal = () => {
     setActiveModal("");
+    setIsLoginModalOpen(false);
+    setIsRegisterModalOpen(false);
+    setIsEditProfileModalOpen(false);
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
@@ -234,7 +237,12 @@ function App() {
       >
         <div className="page">
           <div className="page__content">
-            <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+            <Header
+              handleAddClick={handleAddClick}
+              weatherData={weatherData}
+              onLoginClick={() => setIsLoginModalOpen(true)}
+              onRegisterClick={() => setIsRegisterModalOpen(true)}
+            />
 
             <Routes>
               <Route
@@ -264,10 +272,6 @@ function App() {
                     onSignOut={handleSignOut}
                   />
                 }
-              />
-              <Route
-                path="/signin"
-                element={<LoginModal onLogin={handleLogin} />}
               />
             </Routes>
             <Footer />

@@ -2,30 +2,37 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
-export default function RegisterModal({ onClose, isOpen, onRegister }) {
+export default function RegisterModal({
+  onClose,
+  isOpen,
+  onRegister,
+  onLoginClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister({ email, password, name });
+    onRegister({ email, password, name, avatar });
     setEmail("");
     setPassword("");
     setName("");
+    setAvatar("");
   };
 
   return (
     <ModalWithForm
       title="Sign up"
-      buttonText="Register"
+      buttonText="Sign Up"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
       isSubmitDisabled={!email || !password || !name}
     >
       <label className="modal__label">
-        Email
+        Email*
         <input
           type="email"
           name="email"
@@ -37,7 +44,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
         />
       </label>
       <label className="modal__label">
-        Password
+        Password*
         <input
           type="password"
           name="password"
@@ -49,7 +56,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
         />
       </label>
       <label className="modal__label">
-        Name
+        Name*
         <input
           type="text"
           name="name"
@@ -62,6 +69,26 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           onChange={(e) => setName(e.target.value)}
         />
       </label>
+      <label className="modal__label">
+        Avatar URL*
+        <input
+          type="url"
+          name="avatar"
+          className="modal__input"
+          placeholder="Avatar URL"
+          required
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+        />
+      </label>
+
+      <button
+        type="button"
+        className="modal__alt-button"
+        onClick={onLoginClick}
+      >
+        or Log In
+      </button>
     </ModalWithForm>
   );
 }

@@ -8,7 +8,12 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  onLoginClick,
+  onRegisterClick,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   const currentDate = new Date().toLocaleString("default", {
@@ -56,12 +61,12 @@ function Header({ handleAddClick, weatherData }) {
         </>
       ) : (
         <div className="header__auth-links">
-          <Link to="signin" className="header__link">
-            sign In
-          </Link>
-          <Link to="/signup" className="header__link">
-            Register
-          </Link>
+          <button onClick={onRegisterClick} className="header__link">
+            Sign Up
+          </button>
+          <button onClick={onLoginClick} className="header__link">
+            Log In
+          </button>
         </div>
       )}
     </header>
