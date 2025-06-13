@@ -255,6 +255,7 @@ function App() {
                     handleAddClick={handleAddClick}
                     onDelete={handleDeleteItem}
                     onCardLike={handleCardLike}
+                    isLoggedIn={isLoggedIn}
                   />
                 }
               />

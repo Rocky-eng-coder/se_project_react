@@ -2,7 +2,12 @@ import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 
-export default function LoginModal({ onClose, isOpen, onLogin }) {
+export default function LoginModal({
+  onClose,
+  isOpen,
+  onLogin,
+  onRegisterClick,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,6 +26,16 @@ export default function LoginModal({ onClose, isOpen, onLogin }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       isSubmitDisabled={!email || !password}
+      contentClassName="modal__content_login"
+      altButton={
+        <button
+          type="button"
+          className="modal__button modal__alt-button"
+          onClick={onRegisterClick}
+        >
+          or Sign Up
+        </button>
+      }
     >
       <label className="modal__label">
         Email

@@ -30,6 +30,15 @@ export default function RegisterModal({
       onClose={onClose}
       onSubmit={handleSubmit}
       isSubmitDisabled={!email || !password || !name}
+      altButton={
+        <button
+          type="button"
+          className="modal__button modal__alt-button"
+          onClick={onLoginClick}
+        >
+          or Log In
+        </button>
+      }
     >
       <label className="modal__label">
         Email*
@@ -81,14 +90,6 @@ export default function RegisterModal({
           onChange={(e) => setAvatar(e.target.value)}
         />
       </label>
-
-      <button
-        type="button"
-        className="modal__alt-button"
-        onClick={onLoginClick}
-      >
-        or Log In
-      </button>
     </ModalWithForm>
   );
 }

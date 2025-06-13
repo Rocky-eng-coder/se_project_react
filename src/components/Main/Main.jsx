@@ -10,8 +10,13 @@ function Main({
   clothingItems,
   onDelete,
   onCardLike,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
+  const itemsToShow = isLoggedIn
+    ? clothingItems.filter((item) => item.weather === weatherData.type)
+    : clothingItems;
 
   return (
     <main>
@@ -25,22 +30,15 @@ function Main({
           &deg; {currentTemperatureUnit} / You may want to wear:
         </p>
         <ul className="cards__list">
-          {clothingItems
-
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
-                  onDelete={onDelete}
-                  onCardLike={onCardLike}
-                />
-              );
-            })}
+          {itemsToShow.map((item) => (
+            <ItemCard
+              key={item._id}
+              item={item}
+              onCardClick={handleCardClick}
+              onDelete={onDelete}
+              onCardLike={onCardLike}
+            />
+          ))}
         </ul>
       </section>
     </main>
