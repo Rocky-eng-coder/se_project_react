@@ -216,7 +216,7 @@ function App() {
     const likeorDislike = isLiked ? removeCardLike : addCardLike;
 
     likeorDislike(_id, token)
-      .token((updatedCard) => {
+      .then((updatedCard) => {
         setClothingItems((cards) =>
           cards.map((item) => (item._id === _id ? updatedCard : item))
         );

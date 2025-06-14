@@ -14,6 +14,8 @@ function Main({
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
+  console.log("clothingItems:", clothingItems);
+
   const itemsToShow = isLoggedIn
     ? clothingItems.filter((item) => item.weather === weatherData.type)
     : clothingItems;

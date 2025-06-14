@@ -6,9 +6,9 @@ import { useContext } from "react";
 function ClothesSection({ clothingItems = [], onCardClick, onAddClick }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const userItems = clothingItems.filter(
-    (item) => item.owner === currentUser?._id
-  );
+  const userItems = currentUser
+    ? clothingItems.filter((item) => item.owner === currentUser._id)
+    : [];
 
   return (
     <div className="clothes-section">
