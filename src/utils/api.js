@@ -7,17 +7,21 @@ function getItems() {
 }
 
 function addItem({ name, imageUrl, weather }, token) {
-  console.log("Sending item to backend:", { name, link: imageUrl, weather });
-
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, link: imageUrl, weather }),
+    body: JSON.stringify({ name, imageUrl, weather }),
   }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
+    res.ok
+      ? res.json()
+      : res.json().then((err) => {
+          console.error("Backend error response:", err);
+          console.log("payload sent to backend:", { name, link, weather });
+          return Promise.reject(`Error: ${res.status}`);
+        })
   );
 }
 

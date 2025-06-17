@@ -72,16 +72,17 @@ function App() {
     // Create a new item with the correct property name
     const newItemData = {
       name,
-      link: imageUrl, // we send it as imageUrl
+      imageUrl: imageUrl, // we send it as imageUrl
       weather,
     };
 
+    console.log("submitting item:", { name, link: imageUrl, weather });
     addItem(newItemData, token)
       .then((newItem) => {
         // If the server returns 'link', convert it to 'imageUrl'
         const standardizedItem = {
           ...newItem,
-          imageUrl: newItem.link || newItem.imageUrl,
+          imageUrl: newItem.imageUrl,
         };
         setClothingItems((prevItems) => [standardizedItem, ...prevItems]);
         closeActiveModal();
@@ -103,7 +104,7 @@ function App() {
       .then((data) => {
         const normalizedData = data.map((item) => ({
           ...item,
-          imageUrl: item.link || item.imageUrl,
+          imageUrl: item.imageUrl,
         }));
 
         setClothingItems(normalizedData);
