@@ -6,14 +6,16 @@ function getItems() {
   });
 }
 
-function addItem({ name, link, weather }, token) {
+function addItem({ name, imageUrl, weather }, token) {
+  console.log("Sending item to backend:", { name, link: imageUrl, weather });
+
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, link, weather }),
+    body: JSON.stringify({ name, link: imageUrl, weather }),
   }).then((res) =>
     res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
   );

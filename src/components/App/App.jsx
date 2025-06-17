@@ -292,11 +292,19 @@ function App() {
             isOpen={isLoginModalOpen}
             onClose={closeActiveModal}
             onLogin={handleLogin}
+            onRegisterClick={() => {
+              setIsLoginModalOpen(false);
+              setIsRegisterModalOpen(true);
+            }}
           />
           <RegisterModal
             isOpen={isRegisterModalOpen}
             onClose={closeActiveModal}
             onRegister={handleRegister}
+            onLoginClick={() => {
+              setIsRegisterModalOpen(false);
+              setIsLoginModalOpen(true);
+            }}
           />
           <EditProfileModal
             isOpen={isEditProfileModalOpen}
