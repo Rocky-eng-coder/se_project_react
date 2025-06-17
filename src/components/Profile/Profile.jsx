@@ -11,6 +11,7 @@ function Profile({
   handleAddClick,
   onDeleteItem,
   onSignOut,
+  onCardLike,
   api,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -51,13 +52,14 @@ function Profile({
           onCardClick={onCardClick}
           onAddClick={handleAddClick}
           onDelete={onDeleteItem}
+          onCardLike={onCardLike}
         />
       </section>
 
       <EditProfileModal
         isOpen={isEditModalOpen}
-        onClose={closeEditModalOpen}
-        OnUpdateUser={handleUpdateUser}
+        onClose={closeEditModal}
+        onUpdateUser={handleUpdateUser}
       />
     </div>
   );

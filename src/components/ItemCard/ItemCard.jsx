@@ -32,7 +32,7 @@ function ItemCard({ item, onCardClick, onDelete, onCardLike }) {
       <img
         onClick={handleCardClick}
         className="card__image"
-        src={item.imageUrl || item.link}
+        src={item.imageUrl}
         alt={item.name}
       />
 

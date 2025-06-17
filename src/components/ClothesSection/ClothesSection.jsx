@@ -3,7 +3,13 @@ import "./ClothesSection.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function ClothesSection({ clothingItems = [], onCardClick, onAddClick }) {
+function ClothesSection({
+  clothingItems = [],
+  onCardClick,
+  onAddClick,
+  onDelete,
+  onCardLike,
+}) {
   const currentUser = useContext(CurrentUserContext);
 
   const userItems = currentUser
@@ -25,7 +31,8 @@ function ClothesSection({ clothingItems = [], onCardClick, onAddClick }) {
               key={item._id}
               item={item}
               onCardClick={onCardClick}
-              // TODO - Pass as prop
+              onDelete={onDelete}
+              onCardLike={onCardLike}
             />
           ))
         ) : (

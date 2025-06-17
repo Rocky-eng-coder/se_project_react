@@ -79,10 +79,11 @@ function App() {
     console.log("submitting item:", { name, link: imageUrl, weather });
     addItem(newItemData, token)
       .then((newItem) => {
+        const item = newItem.data ?? newItem;
         // If the server returns 'link', convert it to 'imageUrl'
         const standardizedItem = {
-          ...newItem,
-          imageUrl: newItem.imageUrl,
+          ...item,
+          imageUrl: item.imageUrl,
         };
         setClothingItems((prevItems) => [standardizedItem, ...prevItems]);
         closeActiveModal();
@@ -268,7 +269,7 @@ function App() {
                     weatherData={weatherData}
                     clothingItems={clothingItems}
                     handleAddClick={handleAddClick}
-                    onDelete={handleDeleteItem}
+                    onDeleteItem={handleDeleteItem}
                     onEditProfile={() => setIsEditProfileModalOpen(true)}
                     onCardLike={handleCardLike}
                     onSignOut={handleSignOut}
