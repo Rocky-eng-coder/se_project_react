@@ -15,10 +15,12 @@ function Main({
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   console.log("clothingItems:", clothingItems);
+  console.log("weatherData:", weatherData);
 
   const itemsToShow = isLoggedIn
     ? clothingItems.filter((item) => item.weather === weatherData.type)
     : clothingItems;
+  console.log("itemsToShow", itemsToShow);
 
   return (
     <main>
