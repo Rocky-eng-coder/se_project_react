@@ -191,7 +191,7 @@ function App() {
 
     deleteItem(itemToDelete._id, token)
       .then(() => {
-        setClothingItems((prevItems = []) =>
+        setClothingItems((prevItems) =>
           prevItems.filter((item) => item._id !== itemToDelete._id)
         );
         closeActiveModal();
@@ -255,7 +255,6 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     handleAddClick={handleAddClick}
-                    onDelete={handleDeleteItem}
                     onCardLike={handleCardLike}
                     isLoggedIn={isLoggedIn}
                   />

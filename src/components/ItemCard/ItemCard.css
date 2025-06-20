@@ -3,6 +3,14 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.card__header {
+  position: absolute;
+  top: 15px;
+  display: flex;
+  align-items: center;
 }
 
 .card__text {
@@ -15,7 +23,6 @@
 }
 
 .card__name {
-  position: absolute;
   top: 15px;
   margin: 0;
   background-color: #ffffff;
@@ -43,4 +50,14 @@
   border-width: 1px;
   background: #e9e9e9;
   border: 1px solid #0000004d;
+}
+
+.card__like-button {
+  background-image: url("../../assets/day/likebutton.jpg");
+  width: 20px;
+  height: 18px;
+  border: none;
+}
+
+.card__like-button:active {
 }

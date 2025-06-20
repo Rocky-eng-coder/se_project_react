@@ -19,7 +19,7 @@ function addItem({ name, imageUrl, weather }, token) {
       ? res.json()
       : res.json().then((err) => {
           console.error("Backend error response:", err);
-          console.log("payload sent to backend:", { name, link, weather });
+          console.log("payload sent to backend:", { name, imageUrl, weather });
           return Promise.reject(`Error: ${res.status}`);
         })
   );
