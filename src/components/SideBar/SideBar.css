@@ -8,6 +8,41 @@
   flex-direction: row;
 }
 
+.sidebar__buttons {
+  margin-top: 75px;
+  margin-left: -180px;
+  flex-direction: column;
+  display: flex;
+}
+
+.edit-profile-button {
+  border: none;
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding-bottom: 9px;
+}
+
+.sidebar__signout-button {
+  border: none;
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  padding-right: 30px;
+}
+
+.sidebar__avatar {
+  width: 56;
+  height: 1;
+  top: 119px;
+  left: 40px;
+  border-width: 1px;
+}
+
 .sidebar__username {
   margin-left: 16px;
   font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;

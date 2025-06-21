@@ -1,0 +1,36 @@
+.modal__form {
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.modal__input {
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.modal__content.modal__content--form {
+  width: 496px;
+  height: 304px;
+}
+
+.modal__save-button {
+  width: 128px;
+  height: 36px;
+  top: 491px;
+  left: 500px;
+  border-radius: 4px;
+  margin-top: 16px;
+  background: #000000;
+  color: #ffffff;
+  font-family: Cabinet Grotesk, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}

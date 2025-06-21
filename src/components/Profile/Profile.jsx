@@ -12,6 +12,7 @@ function Profile({
   onDeleteItem,
   onSignOut,
   onCardLike,
+  onEditProfile,
   api,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -38,13 +39,7 @@ function Profile({
   return (
     <div className="profile">
       <section className="profile__sidebar">
-        <SideBar onSignOut={onSignOut} />
-        <button
-          onClick={handleEditProfileClick}
-          className="edit-profile-button"
-        >
-          Edit Profile
-        </button>
+        <SideBar onSignOut={onSignOut} onEditProfile={onEditProfile} />
       </section>
       <section className="profile__clothing-items">
         <ClothesSection

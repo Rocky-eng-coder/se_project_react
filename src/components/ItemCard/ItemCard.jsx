@@ -5,13 +5,12 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const handleCardClick = () => {
+  const handleImageClick = () => {
     onCardClick(item);
   };
 
   const handleLikeClick = (e) => {
     e.stopPropagation();
-    console.log("Like button clicked");
     onCardLike(item);
   };
 
@@ -35,7 +34,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
       </div>
 
       <img
-        onClick={handleCardClick}
+        onClick={handleImageClick}
         className="card__image"
         src={item.imageUrl}
         alt={item.name}

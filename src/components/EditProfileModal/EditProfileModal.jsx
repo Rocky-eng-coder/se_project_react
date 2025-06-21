@@ -25,6 +25,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
         <button className="modal__close" onClick={onClose}></button>
         <h2 className="modal__title">Edit Profile</h2>
         <form onSubmit={handleSubmit} className="modal__form">
+          Name*
           <input
             type="text"
             placeholder="Name"
@@ -33,6 +34,7 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
             className="modal__input"
             required
           />
+          Avatar*
           <input
             type="url"
             placeholder="Avatar URL"

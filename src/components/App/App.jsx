@@ -212,6 +212,7 @@ function App() {
   };
 
   const handleCardLike = ({ _id, likes }) => {
+    console.log("handleCardLike called with:", { _id, likes });
     const token = localStorage.getItem("jwt");
     const isLiked = likes.some((user) => user === currentUser._id);
 
@@ -219,8 +220,9 @@ function App() {
 
     likeorDislike(_id, token)
       .then((updatedCard) => {
+        const newCard = updatedCard.data ?? updatedCard;
         setClothingItems((cards) =>
-          cards.map((item) => (item._id === _id ? updatedCard : item))
+          cards.map((item) => (item._id === _id ? newCard : item))
         );
       })
       .catch((err) => console.error("Error updating like:", err));

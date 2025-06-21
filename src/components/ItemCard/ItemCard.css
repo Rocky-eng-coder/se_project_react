@@ -59,5 +59,6 @@
   border: none;
 }
 
-.card__like-button:active {
+.card__like-button.card__like-button_active {
+  background-image: url("../../assets/day/likebuttonactive.jpg");
 }

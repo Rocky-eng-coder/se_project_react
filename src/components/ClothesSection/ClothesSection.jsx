@@ -7,7 +7,6 @@ function ClothesSection({
   clothingItems = [],
   onCardClick,
   onAddClick,
-  onDelete,
   onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
@@ -31,7 +30,6 @@ function ClothesSection({
               key={item._id}
               item={item}
               onCardClick={onCardClick}
-              onDelete={onDelete}
               onCardLike={onCardLike}
             />
           ))
