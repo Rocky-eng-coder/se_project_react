@@ -21,6 +21,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { updateUserProfile } from "../../utils/auth";
 import { addCardLike, removeCardLike } from "../../utils/api";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import ItemCard from "../ItemCard/ItemCard";
 
 function App() {
@@ -265,16 +266,18 @@ function App() {
               <Route
                 path="/profile"
                 element={
-                  <Profile
-                    onCardClick={handleCardClick}
-                    weatherData={weatherData}
-                    clothingItems={clothingItems}
-                    handleAddClick={handleAddClick}
-                    onDeleteItem={handleDeleteItem}
-                    onEditProfile={() => setIsEditProfileModalOpen(true)}
-                    onCardLike={handleCardLike}
-                    onSignOut={handleSignOut}
-                  />
+                  <ProtectedRoute isLoggedIn={isLoggedIn}>
+                    <Profile
+                      onCardClick={handleCardClick}
+                      weatherData={weatherData}
+                      clothingItems={clothingItems}
+                      handleAddClick={handleAddClick}
+                      onDeleteItem={handleDeleteItem}
+                      onEditProfile={() => setIsEditProfileModalOpen(true)}
+                      onCardLike={handleCardLike}
+                      onSignOut={handleSignOut}
+                    />
+                  </ProtectedRoute>
                 }
               />
             </Routes>

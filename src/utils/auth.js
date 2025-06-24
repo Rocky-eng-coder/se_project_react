@@ -1,5 +1,7 @@
 const baseUrl = "http://localhost:3001";
 
+import { checkResponse } from "../utils/api";
+
 function registerUser({ email, password, name, avatar }) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
@@ -7,9 +9,7 @@ function registerUser({ email, password, name, avatar }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name, avatar }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function loginUser({ email, password }) {
@@ -19,9 +19,7 @@ function loginUser({ email, password }) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function checkToken(token) {
@@ -31,9 +29,7 @@ function checkToken(token) {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Token check failed: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function updateUserProfile({ name, avatar }, token) {
@@ -44,9 +40,7 @@ function updateUserProfile({ name, avatar }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Update failed: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 export { registerUser, loginUser, checkToken, updateUserProfile };
