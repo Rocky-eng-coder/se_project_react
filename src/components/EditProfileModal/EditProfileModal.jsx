@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./EditProfileModal.css";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
@@ -20,35 +21,37 @@ function EditProfileModal({ isOpen, onClose, onUpdateUser }) {
   };
 
   return (
-    <div className={`modal ${isOpen ? "modal_opened" : ""}`}>
-      <div className="modal__content modal__content--form">
-        <button className="modal__close" onClick={onClose}></button>
-        <h2 className="modal__title">Edit Profile</h2>
-        <form onSubmit={handleSubmit} className="modal__form">
-          Name*
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="modal__input"
-            required
-          />
-          Avatar*
-          <input
-            type="url"
-            placeholder="Avatar URL"
-            value={avatar}
-            onChange={(e) => setAvatar(e.target.value)}
-            className="modal__input"
-            required
-          />
-          <button type="submit" className="modal__save-button">
-            Save Changes
-          </button>
-        </form>
-      </div>
-    </div>
+    <ModalWithForm
+      isOpen={isOpen}
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      title="Edit Profile"
+      buttonText="Save Changes"
+      contentClassName="modal__content--form"
+    >
+      <label>
+        Name*
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="modal__input"
+          required
+        />
+      </label>
+      <label>
+        Avatar*
+        <input
+          type="url"
+          placeholder="Avatar URL"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+          className="modal__input"
+          required
+        />
+      </label>
+    </ModalWithForm>
   );
 }
 

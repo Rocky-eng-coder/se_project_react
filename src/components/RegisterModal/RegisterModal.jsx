@@ -12,14 +12,21 @@ export default function RegisterModal({
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onRegister({ email, password, name, avatar });
-    setEmail("");
-    setPassword("");
-    setName("");
-    setAvatar("");
+    onRegister({ email, password, name, avatar })
+      .then(() => {
+        setEmail("");
+        setPassword("");
+        setName("");
+        setAvatar("");
+      })
+      .catch((err) => {
+        console.error("Registration failed:", err);
+        setErrorMessage("Registration failed. Please try again.");
+      });
   };
 
   return (

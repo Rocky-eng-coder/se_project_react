@@ -1,9 +1,16 @@
 const baseUrl = "http://localhost:3001";
 
+function checkResponse(res) {
+  return res.ok
+    ? res.json()
+    : res.json().then((err) => {
+        console.error("Backend error response:", err);
+        return Promise.reject(`Error: ${res.status}`);
+      });
+}
+
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-  });
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
 function addItem({ name, imageUrl, weather }, token) {
@@ -14,15 +21,7 @@ function addItem({ name, imageUrl, weather }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then((res) =>
-    res.ok
-      ? res.json()
-      : res.json().then((err) => {
-          console.error("Backend error response:", err);
-          console.log("payload sent to backend:", { name, imageUrl, weather });
-          return Promise.reject(`Error: ${res.status}`);
-        })
-  );
+  }).then(checkResponse);
 }
 
 function deleteItem(itemId, token) {
@@ -31,9 +30,7 @@ function deleteItem(itemId, token) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function addCardLike(cardId, token) {
@@ -42,9 +39,7 @@ function addCardLike(cardId, token) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function removeCardLike(cardId, token) {
@@ -53,9 +48,7 @@ function removeCardLike(cardId, token) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 function updateUser({ name, avatar }, token) {
@@ -66,9 +59,7 @@ function updateUser({ name, avatar }, token) {
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar }),
-  }).then((res) =>
-    res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
-  );
+  }).then(checkResponse);
 }
 
 export {

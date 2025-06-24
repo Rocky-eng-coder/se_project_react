@@ -10,12 +10,21 @@ export default function LoginModal({
 }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ email, password });
-    setEmail("");
-    setPassword("");
+    setErrorMessage("");
+
+    onLogin({ email, password })
+      .then(() => {
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {
+        console.error("Login failed:", err);
+        setErrorMessage("Login failed.");
+      });
   };
 
   return (
