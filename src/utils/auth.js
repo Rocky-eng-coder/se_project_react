@@ -33,7 +33,7 @@ function checkToken(token) {
 }
 
 function updateUserProfile({ name, avatar }, token) {
-  return fetch("http://localhost:3001/users/me", {
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

@@ -12,19 +12,7 @@ function Profile({
   onSignOut,
   onCardLike,
   onEditProfile,
-  api,
 }) {
-  const currentUser = useContext(CurrentUserContext);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-
-  const handleEditProfileClick = () => {
-    setIsEditModalOpen(true);
-  };
-
-  const closeEditModal = () => {
-    setIsEditModalOpen(false);
-  };
-
   return (
     <div className="profile">
       <section className="profile__sidebar">
