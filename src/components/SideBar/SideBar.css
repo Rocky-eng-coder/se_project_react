@@ -36,8 +36,8 @@
 }
 
 .sidebar__avatar {
-  width: 56;
-  height: 1;
+  width: 56px;
+  height: 56px;
   top: 119px;
   left: 40px;
   border-width: 1px;
