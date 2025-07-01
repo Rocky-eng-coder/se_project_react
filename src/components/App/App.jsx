@@ -156,7 +156,7 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    loginUser({ email, password })
+    return loginUser({ email, password })
       .then((res) => {
         if (res.token) {
           localStorage.setItem("jwt", res.token);
