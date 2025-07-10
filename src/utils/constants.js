@@ -69,9 +69,16 @@ export const defaultClothingItems = [
   },
 ];
 
-export const coordinates = {
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr-fortheday.jumpingcrab.com"
+    : "http://localhost:3001";
+
+const coordinates = {
   latitude: 35.227085,
   longitude: -80.843124,
 };
 
-export const APIkey = "cf099353f518fa37114ea4c4f5ad3355";
+const APIkey = "cf099353f518fa37114ea4c4f5ad3355";
+
+export { coordinates, APIkey, baseUrl };

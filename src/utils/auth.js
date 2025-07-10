@@ -1,5 +1,4 @@
-const baseUrl = "http://localhost:3001";
-
+import { baseUrl } from "../utils/constants";
 import { checkResponse } from "../utils/api";
 
 function registerUser({ email, password, name, avatar }) {
