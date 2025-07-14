@@ -10,4 +10,7 @@ Currently, two official plugins are available:
 Link to Back-end repository
 https://github.com/Rocky-eng-coder/se_project_express
 
-The Domain name for this project is wtwr-fortheday.jumpingcrab.com.
+Domain for wtwr project:
+wtwr-fortheday.jumpingcrab.com
+www.wtwr-fortheday.jumpingcrab.com
+api.wtwr-fortheday.jumpingcrab.com
