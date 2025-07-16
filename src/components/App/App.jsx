@@ -135,7 +135,7 @@ function App() {
   }, []);
 
   const handleRegister = (userData) => {
-    registerUser(userData)
+    return registerUser(userData)
       .then((res) => {
         console.log("User registered:", res);
         return loginUser({
@@ -150,9 +150,9 @@ function App() {
           setIsRegisterModalOpen(false);
         } else {
           console.warn("No token returned after registration login");
+          return Promise.reject("No token returned");
         }
-      })
-      .catch((err) => console.error("Registration/login error:", err));
+      });
   };
 
   const handleLogin = ({ email, password }) => {
