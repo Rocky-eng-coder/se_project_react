@@ -4,22 +4,14 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({
-  weatherData,
-  handleCardClick,
-  clothingItems,
-  onCardLike,
-  isLoggedIn,
-}) {
+function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  console.log("clothingItems:", clothingItems);
-  console.log("weatherData:", weatherData);
+  const itemsToShow = clothingItems.filter(
+    (item) => item.weather === weatherData.type
+  );
 
-  const itemsToShow = isLoggedIn
-    ? clothingItems.filter((item) => item.weather === weatherData.type)
-    : clothingItems;
-  console.log("itemsToShow", itemsToShow);
+  console.log(itemsToShow, clothingItems);
 
   return (
     <main>

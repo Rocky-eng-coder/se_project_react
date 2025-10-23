@@ -70,10 +70,9 @@ function App() {
     if (!token) {
       console.warn("You must be logged in to add items.");
     }
-    // Create a new item with the correct property name
     const newItemData = {
       name,
-      imageUrl: imageUrl, // we send it as imageUrl
+      imageUrl: imageUrl,
       weather,
     };
 
@@ -81,7 +80,6 @@ function App() {
     addItem(newItemData, token)
       .then((newItem) => {
         const item = newItem.data ?? newItem;
-        // If the server returns 'link', convert it to 'imageUrl'
         const standardizedItem = {
           ...item,
           imageUrl: item.imageUrl,
@@ -110,7 +108,6 @@ function App() {
         }));
 
         setClothingItems(normalizedData);
-        // set the clothing items
       })
       .catch(console.error);
   }, []);
