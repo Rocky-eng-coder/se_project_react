@@ -14,3 +14,9 @@ Domain for wtwr project:
 wtwr-fortheday.jumpingcrab.com
 www.wtwr-fortheday.jumpingcrab.com
 api.wtwr-fortheday.jumpingcrab.com
+
+**images**
+![alt text](/se_project_react/src/assets/day/clear.png)
+![alt text](/se_project_react/src/assets/day/clouds.png)
+![alt text](/se_project_react/src/assets/night/clear.png)
+![alt text](/se_project_react/src/assets/night/clouds.png)
